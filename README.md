@@ -3,18 +3,14 @@ submodule
 
 submodule script
 
-1) Create 2 bare repositories
-pluginRepo.git
-appRepo.git
+The documentation is inlined in the scripts
 
-2) Create plugin -> push it to pluginRepo.git
-3) Create app1 -> push it to appRepo.git
+Essentially to run the tests you will:
+1) run demo.sh first it will setup the local repos as well as create the plugin and repo
 
-4) change plugin -> push
+The out come of demo.sh is that there are two instances of the same repo.
 
-5) change plugin -> push
+2) part2.sh will create changes
 
-6) clone App1 into dir App2 
-
-7) clone latest plugin into pluginClone
+3) part3.sh will checkout a new instance of the application in a correct stat for making alterations to the submodules.
 
