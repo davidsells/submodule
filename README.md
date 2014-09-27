@@ -14,5 +14,7 @@ appRepo.git
 
 5) change plugin -> push
 
-6) clone App1 into dir App2
+6) clone App1 into dir App2 
+
 7) clone latest plugin into pluginClone
+
