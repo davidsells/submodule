@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#http://stackoverflow.com/questions/1777854/git-submodules-specify-a-branch-tag/18799234#18799234
+#http://komodoide.com/blog/2014-05/git-submodules/
+
 CWD=${PWD}
 
 #-------------------------------------------
@@ -46,7 +49,8 @@ git submodule add -b master ${CWD}/pluginRepo.git plugin
 echo "-------------------------------------------"
 echo "Added submodule App1"
 echo "-------------------------------------------"
-git submodule update --remote
+# init is run the first time to initialize
+git submodule update --init
 git add .
 git commit -m "App1 submodule add"
 #git commit ./plugin
@@ -70,9 +74,18 @@ echo " app2 the plugin will not have the latest change in plugin"
 echo "-------------------------------------------"
 git clone ${CWD}/appRepo.git app2
 cd app2
-git submodule update --remote
-cd $CWD
+git submodule update --init
 
+#update to master
+cd plugin
+git checkout master
+
+#Back in the app update the commit pointer
+cd ..
+git add plugin
+git commit -m "Update submodule tracking to the latest commit"
+git push
+cd $CWD
 
 
 echo "-------------------------------------------"

@@ -14,15 +14,26 @@ cd app3
 git submodule update --init
 
 cd plugin
+git checkout master
 echo "Change from app to plugin" >> plugin.txt
 
 #Add plugin txt
 echo "Adding plugin to staged"
 git add plugin.txt
 git commit -m "Commit changes to plugin from app"
+git fetch
 git merge origin/master
+git push
+
+#fix up app to reflect the new commit level
+cd ..
+git add plugin
+git commit -m "New update submodule tracking"
+git push
+cd $CWD
 
 
-echo "======================================================================"
-echo " Now go to app3/plugin directory to fix problem.  User: git mergetool"
-echo "======================================================================"
+# no conflict
+#echo "======================================================================"
+#echo " Now go to app3/plugin directory to fix problem.  User: git mergetool"
+#echo "======================================================================"
